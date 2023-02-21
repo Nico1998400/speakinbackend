@@ -6,10 +6,9 @@ public class Audio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int audioId;
-
-    @Column()
     private int Id;
+    @Column()
+    private int audioId;
 
     @Column()
     private String audioFile;

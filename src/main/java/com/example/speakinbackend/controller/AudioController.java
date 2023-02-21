@@ -5,11 +5,11 @@ import com.example.speakinbackend.entities.Audio;
 import com.example.speakinbackend.services.AudioService;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.security.Principal;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/audio")
 public class AudioController {
 
@@ -20,7 +20,7 @@ public class AudioController {
     }
 
     @GetMapping
-    public List<AudioResponse> findAll(@RequestParam (required = false,defaultValue = "") String usrcont){
+    public List<AudioResponse> findAllAudioFile(@RequestParam(required = false, defaultValue = "") String usrcont){
         return audioService.findAllAudioFile(usrcont);
     }
 
@@ -30,7 +30,7 @@ public class AudioController {
     }
 
     @GetMapping("/{id}")
-    public Audio findAudioFileById(@PathVariable int id) {
+    public AudioResponse findAudioFileById(@PathVariable int id) {
         return audioService.findAudioFileById(id);
     }
 }

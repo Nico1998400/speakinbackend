@@ -19,7 +19,7 @@ public class AudioService {
 
     public List<AudioResponse> findAllAudioFile(String contains) {
         return audioRepository
-                .findAllAudioFileContaining(contains)
+                .findByAudioFileContaining(contains)
                 .stream()
                 .map(audio -> new AudioResponse(audio.getAudioId(), audio.getId(), audio.getAudioFile()))
                 .toList();
@@ -29,7 +29,10 @@ public class AudioService {
        return audioRepository.save(audioRequest);
     }
 
-    public Audio findAudioFileById(int id) {
-        return audioRepository.findById(id).orElseThrow();
+    public AudioResponse findAudioFileById(int id) {
+        Audio existingAudio = audioRepository
+                .findById(id)
+                .orElseThrow();
+        return new AudioResponse(existingAudio.getAudioId(), existingAudio.getId(), existingAudio.getAudioFile());
     }
 }

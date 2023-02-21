@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface AudioRepository extends JpaRepository<Audio, Integer> {
-    List<Audio> findAllAudioFileContaining(String containing);
+    List<Audio> findByAudioFileContaining(String containing);
 
 
 }
